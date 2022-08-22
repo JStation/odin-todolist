@@ -1,2 +1,2 @@
-# odin-todolist
+# Todo List
 Todo List Project for Odin Project Javascript Course
