@@ -1,2 +1,5 @@
 # Ignore dependency directory
 node_modules/
+
+# Ignore webpack output
+dist/
