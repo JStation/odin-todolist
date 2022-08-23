@@ -2,3 +2,41 @@ html {
     color: white;
     background-color: slategrey;
 }
+
+/* Universal Box Sizing */
+/* allows for overrides if necessary */
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
+
+/* resets */
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+/* project display */
+.project {
+    background-color: rgb(65, 74, 83);
+    padding: 1rem;
+
+    border-radius: 2rem;
+}
+
+.project-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project-body > ul {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
