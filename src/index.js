@@ -1,2 +1,2 @@
-import css from "./main.css";
+import "./styles.css";
 console.log("main.js loaded");
