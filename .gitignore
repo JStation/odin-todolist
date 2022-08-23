@@ -2,4 +2,6 @@
 node_modules/
 
 # Ignore webpack output
-dist/
+dist/*
+# ...except index.html
+!dist/index.html
