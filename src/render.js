@@ -37,10 +37,9 @@ const getProjectElement = (project) => {
     divBody.classList.add('project-body');
     const ul = document.createElement('ul');
     
-    // TODO: create getTaskListElement(task)
     for (let i = 0; i < project.tasks.length; i++) {
-        const li = document.createElement('li');
-        li.innerText = `Task ${i}`;
+        const li = getTaskListElement(project.tasks[i]);
+        li.dataset.index = i;
         ul.appendChild(li);
     }
 
@@ -49,6 +48,12 @@ const getProjectElement = (project) => {
 
     return divProject;
 
+}
+
+const getTaskListElement = (task) => {
+    const li = document.createElement('li');
+    li.innerText = task.title;
+    return li;
 }
 
 const UpdateAllProjectElements = (projects) => {

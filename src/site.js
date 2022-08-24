@@ -27,7 +27,6 @@ export const handleClickDeleteProject = (evt) => {
 }
 
 
-
 // setup
 const setupPage = () => {
     const newProjectButton = document.querySelector("#newProjectButton");
