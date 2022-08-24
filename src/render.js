@@ -44,11 +44,13 @@ const getProjectElement = (project) => {
 
 }
 
-const UpdateAllProjectElements = (parentDiv, projects) => {
-    // clear parentDiv w/ utility function
+const UpdateAllProjectElements = (projects) => {
+    const parentDiv = document.querySelector(".project-container");
+    const projectElements = [];
     for (let i = 0; i<projects.length; i++) {
-        parentDiv.appendChild(getProjectElement(projects[i]));
+        projectElements.push(getProjectElement(projects[i]));
     }
+    parentDiv.replaceChildren(...projectElements);
 }
 
 export default UpdateAllProjectElements;
