@@ -3,22 +3,32 @@
 import UpdateAllProjectElements from "./render";
 import { projects, Project } from "./tasks";
 
-const createNewProject = () => {
-    console.log("create new project!")
-    let p = Project("New Project");
-    console.log(p);
+const createNewProject = (title) => {
+    if (title === undefined) {
+        title = "New Project";
+    }
+    let p = Project(title);
     projects.push(p);
-    console.log(projects);
 }
 
 const handleClickNewProject = (evt) => {
-    console.log(evt);
     createNewProject();
     UpdateAllProjectElements(projects);
 }
 
-// setup
+const deleteProject = (index) => {
+    projects.splice(index, 1);
+}
 
+export const handleClickDeleteProject = (evt) => {
+    const index = evt.currentTarget.parentElement.parentElement.dataset.index;
+    deleteProject(index);
+    UpdateAllProjectElements(projects);
+}
+
+
+
+// setup
 const setupPage = () => {
     const newProjectButton = document.querySelector("#newProjectButton");
     newProjectButton.addEventListener("click", handleClickNewProject);

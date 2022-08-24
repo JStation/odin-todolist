@@ -24,9 +24,11 @@ ul {
 /* project display */
 .project {
     background-color: rgb(65, 74, 83);
-    padding: 1rem;
+    padding: 1rem 2rem;
 
     border-radius: 2rem;
+
+    position: relative;
 }
 
 .project-container {
@@ -39,4 +41,19 @@ ul {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+}
+
+.project-close {
+    font-size: 4rem;
+    font-weight: bold;
+    transition: color 0.2s ease;
+
+    cursor: pointer;
+    position: absolute;
+    top: .5rem;
+    right: 2rem;
+}
+
+.project-close:hover {
+    color: red;
 }

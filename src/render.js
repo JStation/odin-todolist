@@ -1,5 +1,7 @@
 // render objects into DOM elements
 
+import { handleClickDeleteProject } from "./site";
+
 /* Project list HTML template:
 <div class="project">
     <div class="project-head">
@@ -24,6 +26,11 @@ const getProjectElement = (project) => {
     h2.classList.add('project-title');
     h2.innerText = project.title;
     divHead.appendChild(h2);
+    const span = document.createElement('span');
+    span.classList.add("project-close");
+    span.innerHTML = "&times;";
+    span.addEventListener("click", handleClickDeleteProject);
+    divHead.appendChild(span);
     divProject.appendChild(divHead);
 
     const divBody = document.createElement('div');
@@ -48,7 +55,9 @@ const UpdateAllProjectElements = (projects) => {
     const parentDiv = document.querySelector(".project-container");
     const projectElements = [];
     for (let i = 0; i<projects.length; i++) {
-        projectElements.push(getProjectElement(projects[i]));
+        const pElement = getProjectElement(projects[i]);
+        pElement.dataset.index = i;
+        projectElements.push(pElement);
     }
     parentDiv.replaceChildren(...projectElements);
 }
