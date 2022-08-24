@@ -33,7 +33,7 @@ const getProjectElement = (project) => {
     // TODO: create getTaskListElement(task)
     for (let i = 0; i < project.tasks.length; i++) {
         const li = document.createElement('li');
-        li.innerText = `Task {i}`;
+        li.innerText = `Task ${i}`;
         ul.appendChild(li);
     }
 
@@ -43,3 +43,12 @@ const getProjectElement = (project) => {
     return divProject;
 
 }
+
+const UpdateAllProjectElements = (parentDiv, projects) => {
+    // clear parentDiv w/ utility function
+    for (let i = 0; i<projects.length; i++) {
+        parentDiv.appendChild(getProjectElement(projects[i]));
+    }
+}
+
+export default UpdateAllProjectElements;

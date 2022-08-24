@@ -1,4 +1,6 @@
 console.log("tasks.js loaded");
+// project library
+const projects = [];
 
 // task factory
 const Task = (title, description, dueDate, project) => {
@@ -9,8 +11,10 @@ const Task = (title, description, dueDate, project) => {
 // Project factory
 const Project = (title) => {
     const tasks = [];
-    return { title, tasks };
+    const addTask = (task) => {
+        tasks.push(task);
+    }
+    return { title, tasks, addTask };
 }
 
-
-export {Task, Project};
+export {Task, Project, projects};
