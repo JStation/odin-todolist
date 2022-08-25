@@ -44,6 +44,8 @@ export const handleClickOnProjectTitle = (evt) => {
 }
 
 export const handleTextInputOnProjectTitle = (evt) => {
+    // TODO: fix; this only works when escape key is inputted into the field
+    // esc key should be checked for at document level not on the input element
     if (evt.key == 'Escape') {
         UpdateAllProjectElements(projects);
         return;
@@ -58,7 +60,7 @@ export const handleTextInputOnProjectTitle = (evt) => {
         alert("Name cannot be blank.");
         return;
     }
-    
+
     editProjectTitle(project, inputText);
 
     UpdateAllProjectElements(projects); // display updated title; clear all active classes

@@ -1,6 +1,7 @@
 html {
     color: white;
     background-color: slategrey;
+    min-height: 100vh;
 }
 
 /* Universal Box Sizing */
@@ -27,6 +28,13 @@ ul {
 
 input[type='text'] {
     font-size: inherit;
+}
+
+/* header */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* project display */
@@ -88,7 +96,7 @@ input[type='text'] {
 }
 
 .project-head {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .project-head h2 {
