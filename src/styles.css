@@ -37,6 +37,10 @@ ul {
     gap: 1rem;
 }
 
+.project-head > h1::after {
+
+}
+
 .project-body > ul {
     display: flex;
     flex-direction: column;
@@ -51,9 +55,30 @@ ul {
     cursor: pointer;
     position: absolute;
     top: .5rem;
-    right: 2rem;
+    right: 1.5rem;
 }
 
 .project-close:hover {
     color: red;
+}
+
+.controls {
+    padding: 1rem 0;
+}
+
+#newProjectButton {
+    transition: background-color 0.1s ease-out;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    background-color:rgb(68, 107, 146);
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    padding: 1rem 1.5rem;
+}
+
+#newProjectButton:hover {
+    background-color: rgb(31, 90, 150)
 }
