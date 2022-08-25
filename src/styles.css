@@ -15,10 +15,18 @@ html {
 
 
 /* resets */
+h2 {
+    font-size: inherit;
+    margin: 0;
+}
 
 ul {
     padding: 0;
     list-style: none;
+}
+
+input[type='text'] {
+    font-size: inherit;
 }
 
 /* project display */
@@ -35,10 +43,6 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-}
-
-.project-head > h1::after {
-
 }
 
 .project-body > ul {
@@ -81,4 +85,37 @@ ul {
 
 #newProjectButton:hover {
     background-color: rgb(31, 90, 150)
+}
+
+.project-head {
+    font-size: 1.5rem;
+}
+
+.project-head h2 {
+    padding-left: 1rem;
+}
+
+.project-head input {
+    outline: none;
+    border: none;
+    color: inherit;
+
+    display: none;
+    font-family: serif;
+    font-size: inherit;
+
+    background-color: inherit;
+    background-color: rgba(0,0,0,0.1);
+
+    padding-left: 1rem;
+    border-radius: 1rem;
+
+}
+
+.project-head h2.active {
+    display: none;
+}
+
+.project-head input.active {
+    display: unset;
 }

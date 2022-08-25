@@ -26,6 +26,51 @@ export const handleClickDeleteProject = (evt) => {
     UpdateAllProjectElements(projects);
 }
 
+const editProjectTitle = (project, title) => {
+    project.title = title;
+}
+
+export const handleClickOnProjectTitle = (evt) => {
+    const h2ProjectTitle = evt.currentTarget;
+    const inputProjectTitle = evt.currentTarget.nextSibling;
+    
+    clearAllActiveClasses();
+
+    h2ProjectTitle.classList.add("active");
+    inputProjectTitle.classList.add("active");
+    inputProjectTitle.focus();
+    inputProjectTitle.select();
+
+}
+
+export const handleTextInputOnProjectTitle = (evt) => {
+    if (evt.key == 'Escape') {
+        UpdateAllProjectElements(projects);
+        return;
+    }
+    if (evt.key !== 'Enter') return;
+
+    let inputText = evt.currentTarget.value;
+    const index = evt.currentTarget.parentElement.parentElement.dataset.index;
+    const project = projects[index];
+    
+    if (inputText === "") {
+        alert("Name cannot be blank.");
+        return;
+    }
+    
+    editProjectTitle(project, inputText);
+
+    UpdateAllProjectElements(projects); // display updated title; clear all active classes
+}
+
+const clearAllActiveClasses = () => {
+    const elements = document.querySelectorAll('.active');
+    elements.forEach((el) => {
+        el.classList.remove('active');
+    });
+}
+
 
 // setup
 const setupPage = () => {
