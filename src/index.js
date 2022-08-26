@@ -6,7 +6,7 @@ import { Task, Project, projects }from "./tasks";
 console.log("main.js loaded");
 
 // TESTING
-var a = Task('testing');
+var a = Task('Test Project');
 console.log(a);
 
 let p1 = Project("Testing Project");
