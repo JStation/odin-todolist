@@ -94,7 +94,6 @@ const deleteTask = (projectIndex, taskIndex) => {
 export const handleClickDeleteTask = (evt) => {
     const projectIndex = evt.currentTarget.parentElement.parentElement.parentElement.parentElement.dataset.index;
     const taskIndex = evt.currentTarget.parentElement.dataset.index;
-    console.log({projectIndex, taskIndex});
     deleteTask(projectIndex, taskIndex);
     UpdateAllProjectElements(projects);
 }
