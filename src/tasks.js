@@ -17,7 +17,10 @@ const Project = (title) => {
     const deleteTask = (index) => {
         tasks.splice(index, 1);
     }
-    return { title, tasks, addTask, deleteTask };
+    const renameTask = (index, title) => {
+        tasks[index].title = title;
+    }
+    return { title, tasks, addTask, deleteTask, renameTask };
 }
 
 export {Task, Project, projects};

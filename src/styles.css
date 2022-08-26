@@ -163,3 +163,28 @@ header {
     background: none;
     padding: 0;
 }
+
+.task-row input {
+    outline: none;
+    border: none;
+    color: inherit;
+
+    display: none;
+    font-family: serif;
+    font-size: inherit;
+
+    background-color: inherit;
+    background-color: rgba(0,0,0,0.1);
+
+    padding-left: .5rem;
+    border-radius: 1rem;
+
+}
+
+.task-row span.active {
+    display: none;
+}
+
+.task-row input.active {
+    display: unset;
+}

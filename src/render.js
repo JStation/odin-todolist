@@ -1,6 +1,6 @@
 // render objects into DOM elements
 
-import { handleClickDeleteProject, handleClickOnProjectTitle, handleTextInputOnProjectTitle, handleClickNewTask, handleClickDeleteTask } from "./site";
+import { handleClickDeleteProject, handleClickOnProjectTitle, handleTextInputOnProjectTitle, handleClickNewTask, handleClickDeleteTask, handleClickOnTaskTitle, handleTextInputOnTaskTitle } from "./site";
 
 /* Project list HTML template:
 <div class="project">
@@ -82,7 +82,13 @@ const getTaskListElement = (task) => {
 
     const span = document.createElement('span');
     span.innerText = task.title;
+    span.addEventListener("click", handleClickOnTaskTitle);
     li.appendChild(span);
+
+    const input = document.createElement('input');
+    input.setAttribute("value", task.title);
+    input.addEventListener("keyup", handleTextInputOnTaskTitle);
+    li.appendChild(input);
 
     return li;
 }

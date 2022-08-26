@@ -99,6 +99,62 @@ export const handleClickDeleteTask = (evt) => {
     UpdateAllProjectElements(projects);
 }
 
+const editTaskTitle = (project, taskIndex, title) => {
+    project.renameTask(taskIndex, title);
+}
+
+export const handleClickOnTaskTitle = (evt) => {
+    const spanTaskTitle = evt.currentTarget;
+    const inputTaskTitle = evt.currentTarget.nextSibling;
+
+    clearAllActiveClasses();
+
+    spanTaskTitle.classList.add("active");
+    inputTaskTitle.classList.add("active");
+    inputTaskTitle.focus();
+    inputTaskTitle.select();
+}
+
+// export const handleTextInputOnProjectTitle = (evt) => {
+//     // TODO: fix; this only works when escape key is inputted into the field
+//     // esc key should be checked for at document level not on the input element
+//     if (evt.key == 'Escape') {
+//         UpdateAllProjectElements(projects);
+//         return;
+//     }
+//     if (evt.key !== 'Enter') return;
+
+//     let inputText = evt.currentTarget.value;
+//     const index = evt.currentTarget.parentElement.parentElement.dataset.index;
+//     const project = projects[index];
+    
+//     if (inputText === "") {
+//         alert("Name cannot be blank.");
+//         return;
+//     }
+
+//     editProjectTitle(project, inputText);
+
+//     UpdateAllProjectElements(projects); // display updated title; clear all active classes
+// }
+export const handleTextInputOnTaskTitle = (evt) => {
+    if (evt.key == 'Escape') {
+        UpdateAllProjectElements(projects);
+        return;
+    }
+    if (evt.key !== 'Enter') return;
+
+    let inputText = evt.currentTarget.value;
+    const taskIndex = evt.currentTarget.parentElement.dataset.index;
+    const projectIndex = evt.currentTarget.parentElement.parentElement.parentElement.parentElement.dataset.index;
+    const project = projects[projectIndex];
+
+    editTaskTitle(project, taskIndex, inputText);
+
+    UpdateAllProjectElements(projects);
+
+}
+
 
 // setup
 const setupPage = () => {
