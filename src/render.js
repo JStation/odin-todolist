@@ -15,6 +15,9 @@ import { handleClickDeleteProject, handleClickOnProjectTitle, handleTextInputOnP
         </ul>
     </div>
 </div>
+
+Button for adding task:
+<button class="button newTaskButton">+</button>
 */
 const getProjectElement = (project) => {
     const divProject = document.createElement('div');
@@ -50,15 +53,35 @@ const getProjectElement = (project) => {
     }
 
     divBody.appendChild(ul);
+
+    const addTaskButton = getAddTaskButton();
+    divBody.appendChild(addTaskButton);
+
     divProject.appendChild(divBody);
 
     return divProject;
 
 }
 
+const getAddTaskButton = () => {
+    const btn = document.createElement('button');
+    btn.classList.add('button', 'newTaskButton');
+    btn.innerText = "+";
+    return btn;
+}
+
 const getTaskListElement = (task) => {
     const li = document.createElement('li');
-    li.innerText = task.title;
+    li.classList.add("task-row");
+
+    const btn = document.createElement('button');
+    btn.innerText = "☐";
+    li.appendChild(btn);
+
+    const span = document.createElement('span');
+    span.innerText = task.title;
+    li.appendChild(span);
+
     return li;
 }
 
