@@ -14,7 +14,10 @@ const Project = (title) => {
     const addTask = (task) => {
         tasks.push(task);
     }
-    return { title, tasks, addTask };
+    const deleteTask = (index) => {
+        tasks.splice(index, 1);
+    }
+    return { title, tasks, addTask, deleteTask };
 }
 
 export {Task, Project, projects};

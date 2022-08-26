@@ -82,9 +82,20 @@ const createNewTask = (projectIndex, title) => {
 }
 
 export const handleClickNewTask = (evt) => {
-    console.log(evt.currentTarget.parentElement.parentElement);
     const index = evt.currentTarget.parentElement.parentElement.dataset.index;
     createNewTask(index);
+    UpdateAllProjectElements(projects);
+}
+
+const deleteTask = (projectIndex, taskIndex) => {
+    projects[projectIndex].deleteTask(taskIndex);
+}
+
+export const handleClickDeleteTask = (evt) => {
+    const projectIndex = evt.currentTarget.parentElement.parentElement.parentElement.parentElement.dataset.index;
+    const taskIndex = evt.currentTarget.parentElement.dataset.index;
+    console.log({projectIndex, taskIndex});
+    deleteTask(projectIndex, taskIndex);
     UpdateAllProjectElements(projects);
 }
 
