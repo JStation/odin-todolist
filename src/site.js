@@ -1,7 +1,7 @@
 // utilities, event handlers, functionality
 
 import UpdateAllProjectElements from "./render";
-import { projects, Project } from "./tasks";
+import { projects, Project, Task } from "./tasks";
 
 const createNewProject = (title) => {
     if (title === undefined) {
@@ -71,6 +71,21 @@ const clearAllActiveClasses = () => {
     elements.forEach((el) => {
         el.classList.remove('active');
     });
+}
+
+const createNewTask = (projectIndex, title) => {
+    if (title === undefined) {
+        title = "New task";
+    }
+    let t = Task(title);
+    projects[projectIndex].addTask(t);
+}
+
+export const handleClickNewTask = (evt) => {
+    console.log(evt.currentTarget.parentElement.parentElement);
+    const index = evt.currentTarget.parentElement.parentElement.dataset.index;
+    createNewTask(index);
+    UpdateAllProjectElements(projects);
 }
 
 
