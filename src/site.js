@@ -3,11 +3,21 @@
 import UpdateAllProjectElements from './render';
 import { projects, Project, Task } from './tasks';
 
+const clearAllActiveClasses = () => {
+  const elements = document.querySelectorAll('.active');
+  elements.forEach((el) => {
+    el.classList.remove('active');
+  });
+};
+
 const createNewProject = (title) => {
+  let t; // eslint fix: avoid reassignment of function parameter
   if (title === undefined) {
-    title = 'New Project';
+    t = 'New Project';
+  } else {
+    t = title;
   }
-  let p = Project(title);
+  const p = Project(t);
   projects.push(p);
 };
 
@@ -21,12 +31,14 @@ const deleteProject = (index) => {
 };
 
 export const handleClickDeleteProject = (evt) => {
-  const index = evt.currentTarget.parentElement.parentElement.dataset.index;
+  // use destructuring on dataset object to grab data-index
+  const { index } = evt.currentTarget.parentElement.parentElement.dataset;
   deleteProject(index);
   UpdateAllProjectElements(projects);
 };
 
 const editProjectTitle = (project, title) => {
+  // eslint-disable-next-line no-param-reassign
   project.title = title;
 };
 
@@ -40,23 +52,23 @@ export const handleClickOnProjectTitle = (evt) => {
   inputProjectTitle.classList.add('active');
   inputProjectTitle.focus();
   inputProjectTitle.select();
-
 };
 
 export const handleTextInputOnProjectTitle = (evt) => {
   // TODO: fix; this only works when escape key is inputted into the field
   // esc key should be checked for at document level not on the input element
-  if (evt.key == 'Escape') {
+  if (evt.key === 'Escape') {
     UpdateAllProjectElements(projects);
     return;
   }
   if (evt.key !== 'Enter') return;
 
-  let inputText = evt.currentTarget.value;
-  const index = evt.currentTarget.parentElement.parentElement.dataset.index;
+  const inputText = evt.currentTarget.value;
+  const { index } = evt.currentTarget.parentElement.parentElement.dataset;
   const project = projects[index];
-    
+
   if (inputText === '') {
+    // eslint-disable-next-line no-alert
     alert('Name cannot be blank.');
     return;
   }
@@ -66,23 +78,19 @@ export const handleTextInputOnProjectTitle = (evt) => {
   UpdateAllProjectElements(projects); // display updated title; clear all active classes
 };
 
-const clearAllActiveClasses = () => {
-  const elements = document.querySelectorAll('.active');
-  elements.forEach((el) => {
-    el.classList.remove('active');
-  });
-};
-
 const createNewTask = (projectIndex, title) => {
+  let newTitle;
   if (title === undefined) {
-    title = 'New task';
+    newTitle = 'New task';
+  } else {
+    newTitle = title;
   }
-  let t = Task(title);
-  projects[projectIndex].addTask(t);
+  const task = Task(newTitle);
+  projects[projectIndex].addTask(task);
 };
 
 export const handleClickNewTask = (evt) => {
-  const index = evt.currentTarget.parentElement.parentElement.dataset.index;
+  const { index } = evt.currentTarget.parentElement.parentElement.dataset;
   createNewTask(index);
   UpdateAllProjectElements(projects);
 };
@@ -92,6 +100,7 @@ const deleteTask = (projectIndex, taskIndex) => {
 };
 
 export const handleClickDeleteTask = (evt) => {
+  // eslint-disable-next-line max-len
   const projectIndex = evt.currentTarget.parentElement.parentElement.parentElement.parentElement.dataset.index;
   const taskIndex = evt.currentTarget.parentElement.dataset.index;
   deleteTask(projectIndex, taskIndex);
@@ -121,8 +130,9 @@ export const handleTextInputOnTaskTitle = (evt) => {
   }
   if (evt.key !== 'Enter') return;
 
-  let inputText = evt.currentTarget.value;
+  const inputText = evt.currentTarget.value;
   const taskIndex = evt.currentTarget.parentElement.dataset.index;
+  // eslint-disable-next-line max-len
   const projectIndex = evt.currentTarget.parentElement.parentElement.parentElement.parentElement.dataset.index;
   const project = projects[projectIndex];
 
